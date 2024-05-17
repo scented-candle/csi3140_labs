@@ -1,0 +1,8 @@
+body {font-family: Cambria; font-size: 12pt; color: black;}
+li {margin: 0pt;}
+
+.separator {
+    display: flex;
+    justify-content: space-between; /* Aligns content with space in between */
+    align-items: center; /* Aligns content vertically */
+}
