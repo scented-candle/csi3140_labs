@@ -1,9 +1,13 @@
-function createGame(n){
+var pacPos;
+var ghostPos;
+var fruitPos;
+
+function createGame(n) {
     var arr = new Array();
 
-    var pacPos = Math.floor((Math.random() * n));
-    var ghostPos = Math.floor((Math.random() * n));
-    var fruitPos = Math.floor((Math.random() * n));
+    pacPos = Math.floor((Math.random() * n));
+    ghostPos = Math.floor((Math.random() * n));
+    fruitPos = Math.floor((Math.random() * n));
 
     while(ghostPos == pacPos){
         ghostPos = Math.floor((Math.random() * n)); 
@@ -14,20 +18,53 @@ function createGame(n){
     }
 
     for(var i = 0; i < n; i++ ){
+
         if(i == pacPos){
             arr.push("C");
         } else if (i == ghostPos){
-            arr.push("^")
+            arr.push("^");
         } else if (i == fruitPos){
-            arr.push("@")
+            arr.push("@");
         }else{
-            arr.push(".")
+            arr.push(".");
         }
     }
     
-    document.write(arr);
+    return arr;
 
 }
 
+function moveLeft(game) {
+    var arr = new Array;
 
-createGame(10);
+    arr = game;
+
+    if (pacPos == 0){
+        arr[0] = " ";
+        arr[(arr.length - 1)] = "C.";
+
+    } else {
+        arr[pacPos] = " ";
+        arr[pacPos - 1] = "C."
+    }
+
+    return arr;
+}
+
+function moveRight(game) {
+    var arr = new Array;
+
+    arr = game;
+
+    if (pacPos == arr.length - 1){
+        arr[arr.length - 1] = " ";
+        arr[0] = "C";
+
+    } else {
+        arr[pacPos] = " ";
+        arr[pacPos + 1] = "C"
+    }
+
+    return arr;
+
+}
